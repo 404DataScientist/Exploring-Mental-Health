@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mental Health Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        function updateSliderValue(sliderId, displayId) {
+            document.getElementById(displayId).textContent = document.getElementById(sliderId).value;
+        }
+    </script>
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-4">Mental Health Risk Prediction</h2>
+        <form action="/predict" method="POST">
+
+            <!-- Label Encoded Features -->
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <select class="form-select" name="Gender" required>
+                    <option value="">Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Working Professional or Student</label>
+                <select class="form-select" name="Working Professional or Student" required>
+                    <option value="">Select</option>
+                    <option>Working Professional</option>
+                    <option>Student</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Have you ever had suicidal thoughts ?</label>
+                <select class="form-select" name="Have you ever had suicidal thoughts ?" required>
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Family History of Mental Illness</label>
+                <select class="form-select" name="Family History of Mental Illness" required>
+                    <option value="">Select</option>
+                    <option>Yes</option>
+                    <option>No</option>
+                </select>
+            </div>
+
+            <!-- One-hot Encoded Features -->
+            <div class="mb-3">
+                <label class="form-label">Dietary Habits</label>
+                <select class="form-select" name="Dietary Habits" required>
+                    <option value="">Select</option>
+                    <option>Vegetarian</option>
+                    <option>Non-Vegetarian</option>
+                    <option>Vegan</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">FieldOfStudy</label>
+                <select class="form-select" name="FieldOfStudy" required>
+                    <option>Engineering/Tech</option>
+                    <option>Commerce/Business</option>
+                    <option>Education</option>
+                    <option>Pharmacy/Medical</option>
+                    <option>High School</option>
+                    <option>Arts/Humanities</option>
+                    <option>Science</option>
+                    <option>Law</option>
+                    <option>Architecture</option>
+                    <option>Research</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">ProfessionalField</label>
+                <select class="form-select" name="ProfessionalField">
+                    <option value="">Other</option>
+                    <option value="">Education</option>
+                    <option value="">Finance/Business</option>
+                    <option value="">Other Services</option>
+                    <option value="">Tech/Engineering/Design</option>
+                    <option value="">Healthcare</option>
+                    <option value="">Healthcare</option>
+                    <option value="">Student/Unemployed</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">SleepScore</label>
+                <select class="form-select" name="SleepScore" required>
+                    <option value="">Select</option>
+                    <option>Poor</option>
+                    <option>Average</option>
+                    <option>Good</option>
+                </select>
+            </div>
+
+            <!-- Sliders for Numeric Features -->
+            <div class="mb-3">
+                <label class="form-label">Academic Pressure: <span id="academic_value">3</span></label>
+                <input type="range" class="form-range w-50" id="academic" 
+                       name="Academic Pressure" min="1" max="5" step="1" value="3"
+                       oninput="updateSliderValue('academic', 'academic_value')" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Work Pressure: <span id="work_value">3</span></label>
+                <input type="range" class="form-range w-50" id="work" 
+                       name="Work Pressure" min="1" max="5" step="1" value="3"
+                       oninput="updateSliderValue('work', 'work_value')" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">CGPA: <span id="cgpa_value">3</span></label>
+                <input type="range" class="form-range w-50" id="cgpa" 
+                       name="CGPA" min="1" max="5" step="1" value="3"
+                       oninput="updateSliderValue('cgpa', 'cgpa_value')" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Study Satisfaction: <span id="study_value">3</span></label>
+                <input type="range" class="form-range w-50" id="study" 
+                       name="Study Satisfaction" min="1" max="5" step="1" value="3"
+                       oninput="updateSliderValue('study', 'study_value')" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Job Satisfaction: <span id="job_value">3</span></label>
+                <input type="range" class="form-range w-50" id="job" 
+                       name="Job Satisfaction" min="1" max="5" step="1" value="3"
+                       oninput="updateSliderValue('job', 'job_value')" required>
+            </div>
+
+            <!-- Submit -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Predict</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
