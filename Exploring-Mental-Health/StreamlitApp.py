@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 # Load model
-model = joblib.load("model.pkl")
+model = joblib.load("Exploring-Mental-Health\model.pkl")
 
 st.title("🧠 Mental Health Prediction App")
 
